@@ -1,6 +1,7 @@
 package com.clientes.rest;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/servico/api/clientes") //similar a webservlet
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 	
 	
@@ -47,7 +49,7 @@ public class ClienteController {
 			repository.delete(cliente);
 			return cliente;
 		})
-		.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 	}
 	@PutMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
@@ -57,6 +59,6 @@ public class ClienteController {
 			clienteAtualizado.setId(cliente.getId());
 			return repository.save(clienteAtualizado);
 		})
-		.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 	}
 }
