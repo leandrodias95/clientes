@@ -1,4 +1,4 @@
-package config;
+package com.clientes.config;
 
 import java.util.Locale;
 
@@ -15,8 +15,8 @@ public class InternacionalizacaoConfig {
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename("classpath:messages");
-		messageSource.setDefaultEncoding("ISO-8859-1");
-		messageSource.setDefaultLocale(Locale.getDefault());
+		messageSource.setDefaultEncoding("UTF-8");
+		messageSource.setDefaultLocale(new Locale("pt","BR"));
 		return messageSource;
 	}
 	

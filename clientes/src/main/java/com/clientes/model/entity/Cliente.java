@@ -1,6 +1,5 @@
 package com.clientes.model.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -39,8 +38,6 @@ private String cpf;
 @Column(name="data_cadastro", updatable = false)
 @JsonFormat(pattern ="dd/MM/yyyy")
 private LocalDate dataCadastro;
-@Column
-private BigDecimal valor;
 
 @PrePersist
 public void prepPersist() {
