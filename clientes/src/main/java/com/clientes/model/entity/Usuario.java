@@ -18,7 +18,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name="users")
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -41,7 +41,7 @@ public class Usuario implements UserDetails {
 	@Column(unique = true, nullable = false)
 	private String password;
 	
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private RegraUsuario role;
 
 	

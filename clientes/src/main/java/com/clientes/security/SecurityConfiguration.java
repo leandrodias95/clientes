@@ -30,7 +30,12 @@ public class SecurityConfiguration {
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-						.requestMatchers(HttpMethod.POST, "/servico/api/clientes/insert").hasRole("ADMIN") //apenas usuarios com permissão de admin
+						.requestMatchers(HttpMethod.POST, "/servico/api/clientes/insert").permitAll()
+						.requestMatchers(HttpMethod.GET, "/servico/api/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.DELETE, "/servico/api/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.PUT, "/servico/api/clientes/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/servico/api/servico-prestado/insert").permitAll()
+						.requestMatchers(HttpMethod.GET, "/servico/api/servico-prestado/**").permitAll()
 				.anyRequest().authenticated()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
